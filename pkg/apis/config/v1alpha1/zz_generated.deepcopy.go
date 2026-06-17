@@ -3087,6 +3087,11 @@ func (in *TMOConfigDetail) DeepCopyInto(out *TMOConfigDetail) {
 		*out = new(uint64)
 		**out = **in
 	}
+	if in.FileToAnonReclaimRatio != nil {
+		in, out := &in.FileToAnonReclaimRatio, &out.FileToAnonReclaimRatio
+		*out = new(float64)
+		**out = **in
+	}
 	if in.Interval != nil {
 		in, out := &in.Interval, &out.Interval
 		*out = new(v1.Duration)

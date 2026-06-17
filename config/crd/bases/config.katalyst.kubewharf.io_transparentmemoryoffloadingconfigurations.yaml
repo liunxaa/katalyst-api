@@ -106,6 +106,10 @@ spec:
                               description: EnableTMO is whether to enable TMO on target
                                 objective
                               type: boolean
+                            fileToAnonReclaimRatio:
+                              description: FileToAnonReclaimRatio is the weight ratio
+                                of file page reclaim to anon page reclaim.
+                              type: number
                             interval:
                               description: Interval is the minimum duration the objectives
                                 got memory reclaimed by TMO
@@ -244,6 +248,10 @@ spec:
                               description: EnableTMO is whether to enable TMO on target
                                 objective
                               type: boolean
+                            fileToAnonReclaimRatio:
+                              description: FileToAnonReclaimRatio is the weight ratio
+                                of file page reclaim to anon page reclaim.
+                              type: number
                             interval:
                               description: Interval is the minimum duration the objectives
                                 got memory reclaimed by TMO
@@ -319,6 +327,10 @@ spec:
                               description: EnableTMO is whether to enable TMO on target
                                 objective
                               type: boolean
+                            fileToAnonReclaimRatio:
+                              description: FileToAnonReclaimRatio is the weight ratio
+                                of file page reclaim to anon page reclaim.
+                              type: number
                             interval:
                               description: Interval is the minimum duration the objectives
                                 got memory reclaimed by TMO

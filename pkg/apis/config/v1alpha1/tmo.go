@@ -127,6 +127,10 @@ type TMOConfigDetail struct {
 	// +optional
 	ReservedInactiveFile *uint64 `json:"reservedInactiveFile,omitempty"`
 
+	// FileToAnonReclaimRatio is the weight ratio of file page reclaim to anon page reclaim.
+	// +optional
+	FileToAnonReclaimRatio *float64 `json:"fileToAnonReclaimRatio,omitempty"`
+
 	// Interval is the minimum duration the objectives got memory reclaimed by TMO
 	// +optional
 	Interval *metav1.Duration `json:"interval,omitempty"`
