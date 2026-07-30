@@ -2928,6 +2928,16 @@ func (in *RefaultPolicyConf) DeepCopyInto(out *RefaultPolicyConf) {
 		*out = new(float64)
 		**out = **in
 	}
+	if in.SwappinessStep != nil {
+		in, out := &in.SwappinessStep, &out.SwappinessStep
+		*out = new(int32)
+		**out = **in
+	}
+	if in.SwappinessAnonFileRatio != nil {
+		in, out := &in.SwappinessAnonFileRatio, &out.SwappinessAnonFileRatio
+		*out = new(float64)
+		**out = **in
+	}
 	return
 }
 
@@ -3481,6 +3491,11 @@ func (in *TMOConfigDetail) DeepCopyInto(out *TMOConfigDetail) {
 	}
 	if in.EnableSwap != nil {
 		in, out := &in.EnableSwap, &out.EnableSwap
+		*out = new(bool)
+		**out = **in
+	}
+	if in.EnableSwappinessReclaim != nil {
+		in, out := &in.EnableSwappinessReclaim, &out.EnableSwappinessReclaim
 		*out = new(bool)
 		**out = **in
 	}

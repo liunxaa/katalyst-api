@@ -102,6 +102,10 @@ spec:
                               description: EnableSwap is whether to enable swap to
                                 offloading anon pages
                               type: boolean
+                            enableSwappinessReclaim:
+                              description: EnableSwappinessReclaim is whether to set
+                                swappiness for individual TMO reclaim requests.
+                              type: boolean
                             enableTMO:
                               description: EnableTMO is whether to enable TMO on target
                                 objective
@@ -155,6 +159,18 @@ spec:
                                     ReclaimScanEfficiencyTarget indicates the desired level of efficiency in scanning and
                                     identifying memory pages that can be offloaded.
                                   type: number
+                                swappinessAnonFileRatio:
+                                  description: SwappinessAnonFileRatio is the inactive
+                                    anon/file imbalance required to adjust swappiness.
+                                  minimum: 1
+                                  type: number
+                                swappinessStep:
+                                  description: SwappinessStep is the maximum swappiness
+                                    change after one valid feedback window.
+                                  format: int32
+                                  maximum: 200
+                                  minimum: 1
+                                  type: integer
                               type: object
                             reservedInactiveFile:
                               description: ReservedInactiveFile is the reserved value
@@ -249,6 +265,10 @@ spec:
                               description: EnableSwap is whether to enable swap to
                                 offloading anon pages
                               type: boolean
+                            enableSwappinessReclaim:
+                              description: EnableSwappinessReclaim is whether to set
+                                swappiness for individual TMO reclaim requests.
+                              type: boolean
                             enableTMO:
                               description: EnableTMO is whether to enable TMO on target
                                 objective
@@ -302,6 +322,18 @@ spec:
                                     ReclaimScanEfficiencyTarget indicates the desired level of efficiency in scanning and
                                     identifying memory pages that can be offloaded.
                                   type: number
+                                swappinessAnonFileRatio:
+                                  description: SwappinessAnonFileRatio is the inactive
+                                    anon/file imbalance required to adjust swappiness.
+                                  minimum: 1
+                                  type: number
+                                swappinessStep:
+                                  description: SwappinessStep is the maximum swappiness
+                                    change after one valid feedback window.
+                                  format: int32
+                                  maximum: 200
+                                  minimum: 1
+                                  type: integer
                               type: object
                             reservedInactiveFile:
                               description: ReservedInactiveFile is the reserved value
@@ -333,6 +365,10 @@ spec:
                               description: EnableSwap is whether to enable swap to
                                 offloading anon pages
                               type: boolean
+                            enableSwappinessReclaim:
+                              description: EnableSwappinessReclaim is whether to set
+                                swappiness for individual TMO reclaim requests.
+                              type: boolean
                             enableTMO:
                               description: EnableTMO is whether to enable TMO on target
                                 objective
@@ -386,6 +422,18 @@ spec:
                                     ReclaimScanEfficiencyTarget indicates the desired level of efficiency in scanning and
                                     identifying memory pages that can be offloaded.
                                   type: number
+                                swappinessAnonFileRatio:
+                                  description: SwappinessAnonFileRatio is the inactive
+                                    anon/file imbalance required to adjust swappiness.
+                                  minimum: 1
+                                  type: number
+                                swappinessStep:
+                                  description: SwappinessStep is the maximum swappiness
+                                    change after one valid feedback window.
+                                  format: int32
+                                  maximum: 200
+                                  minimum: 1
+                                  type: integer
                               type: object
                             reservedInactiveFile:
                               description: ReservedInactiveFile is the reserved value
