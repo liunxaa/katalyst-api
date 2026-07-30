@@ -125,6 +125,10 @@ type TMOConfigDetail struct {
 	// +optional
 	EnableSwap *bool `json:"enableSwap,omitempty"`
 
+	// EnableSwappinessReclaim is whether to set swappiness for individual TMO reclaim requests.
+	// +optional
+	EnableSwappinessReclaim *bool `json:"enableSwappinessReclaim,omitempty"`
+
 	// ReservedInactiveFile is the reserved value of inactive file memory
 	// +optional
 	ReservedInactiveFile *uint64 `json:"reservedInactiveFile,omitempty"`
@@ -175,6 +179,13 @@ type RefaultPolicyConf struct {
 	// ReclaimScanEfficiencyTarget indicates the desired level of efficiency in scanning and
 	// identifying memory pages that can be offloaded.
 	ReclaimScanEfficiencyTarget *float64 `json:"reclaimScanEfficiencyTarget,omitempty"`
+	// SwappinessStep is the maximum swappiness change after one valid feedback window.
+	// +kubebuilder:validation:Minimum=1
+	// +kubebuilder:validation:Maximum=200
+	SwappinessStep *int32 `json:"swappinessStep,omitempty"`
+	// SwappinessAnonFileRatio is the inactive anon/file imbalance required to adjust swappiness.
+	// +kubebuilder:validation:Minimum=1
+	SwappinessAnonFileRatio *float64 `json:"swappinessAnonFileRatio,omitempty"`
 }
 
 type BlockConfig struct {
