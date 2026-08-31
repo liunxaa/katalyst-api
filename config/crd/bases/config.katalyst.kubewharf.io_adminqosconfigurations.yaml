@@ -172,6 +172,21 @@ spec:
                   evictionConfig:
                     description: EvictionConfig is a configuration for eviction
                     properties:
+                      batchEvictionConfig:
+                        description: BatchEvictionConfig controls rolling batch eviction
+                          admission.
+                        properties:
+                          enabled:
+                            description: Enabled controls whether batch eviction admission
+                              is enabled.
+                            type: boolean
+                          pluginNames:
+                            description: PluginNames lists eviction plugins allowed
+                              to participate in batch eviction planning.
+                            items:
+                              type: string
+                            type: array
+                        type: object
                       cpuPressureEvictionConfig:
                         description: CPUPressureEvictionConfig is the config for cpu
                           pressure eviction

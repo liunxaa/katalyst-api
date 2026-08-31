@@ -507,6 +507,20 @@ type EvictionConfig struct {
 	// NetworkEvictionConfig is the config for network eviction
 	// +optional
 	NetworkEvictionConfig *NetworkEvictionConfig `json:"networkEvictionConfig,omitempty"`
+
+	// BatchEvictionConfig controls rolling batch eviction admission.
+	// +optional
+	BatchEvictionConfig *BatchEvictionConfig `json:"batchEvictionConfig,omitempty"`
+}
+
+type BatchEvictionConfig struct {
+	// Enabled controls whether batch eviction admission is enabled.
+	// +optional
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// PluginNames lists eviction plugins allowed to participate in batch eviction planning.
+	// +optional
+	PluginNames []string `json:"pluginNames,omitempty"`
 }
 
 type ReclaimedResourcesEvictionConfig struct {
