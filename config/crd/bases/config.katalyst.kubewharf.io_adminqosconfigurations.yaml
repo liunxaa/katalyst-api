@@ -172,21 +172,6 @@ spec:
                   evictionConfig:
                     description: EvictionConfig is a configuration for eviction
                     properties:
-                      batchEvictionConfig:
-                        description: BatchEvictionConfig controls rolling batch eviction
-                          admission.
-                        properties:
-                          enabled:
-                            description: Enabled controls whether batch eviction admission
-                              is enabled.
-                            type: boolean
-                          pluginNames:
-                            description: PluginNames lists eviction plugins allowed
-                              to participate in batch eviction planning.
-                            items:
-                              type: string
-                            type: array
-                        type: object
                       cpuPressureEvictionConfig:
                         description: CPUPressureEvictionConfig is the config for cpu
                           pressure eviction
@@ -394,6 +379,11 @@ spec:
                             type: object
                           checkCPUManager:
                             type: boolean
+                          enableBatchEviction:
+                            description: |-
+                              EnableBatchEviction controls batch eviction for the system CPU pressure plugin.
+                              Batch eviction is enabled when this field is omitted.
+                            type: boolean
                           enableCPUSystemPressureEviction:
                             type: boolean
                           evictionCoolDownTime:
@@ -469,6 +459,11 @@ spec:
                         description: MemoryPressureEvictionConfig is the config for
                           memory pressure eviction
                         properties:
+                          enableGlobalTCPMemoryPressureBatchEviction:
+                            description: |-
+                              EnableGlobalTCPMemoryPressureBatchEviction controls batch eviction for the global TCP memory pressure plugin.
+                              Batch eviction is enabled when this field is omitted.
+                            type: boolean
                           enableGlobalTCPMemoryPressureEviction:
                             description: EnableGlobalTCPMemoryPressureEviction is
                               whether to enable global TCP memory pressure eviction.
@@ -477,6 +472,16 @@ spec:
                             description: EnableNumaLevelEviction is whether to enable
                               numa-level eviction
                             type: boolean
+                          enableNumaMemoryPressureBatchEviction:
+                            description: |-
+                              EnableNumaMemoryPressureBatchEviction controls batch eviction for the NUMA memory pressure plugin.
+                              Batch eviction is enabled when this field is omitted.
+                            type: boolean
+                          enableRSSOveruseBatchEviction:
+                            description: |-
+                              EnableRSSOveruseBatchEviction controls batch eviction for the RSS overuse plugin.
+                              Batch eviction is enabled when this field is omitted.
+                            type: boolean
                           enableRSSOveruseEviction:
                             description: EnableRSSOveruseEviction is whether to enable
                               pod-level rss overuse eviction
@@ -484,6 +489,11 @@ spec:
                           enableSystemLevelEviction:
                             description: EnableSystemLevelEviction is whether to enable
                               system-level eviction
+                            type: boolean
+                          enableSystemMemoryPressureBatchEviction:
+                            description: |-
+                              EnableSystemMemoryPressureBatchEviction controls batch eviction for the system memory pressure plugin.
+                              Batch eviction is enabled when this field is omitted.
                             type: boolean
                           evictNonReclaimedAnnotationSelector:
                             description: EvictNonReclaimedAnnotationSelector is a
@@ -607,6 +617,11 @@ spec:
                         description: NetworkEvictionConfig is the config for network
                           eviction
                         properties:
+                          enableBatchEviction:
+                            description: |-
+                              EnableBatchEviction controls batch eviction for the network eviction plugin.
+                              Batch eviction is enabled when this field is omitted.
+                            type: boolean
                           enableNICNetworkEviction:
                             description: EnableNICHealthEviction is whether to enable
                               NIC health eviction.
@@ -627,6 +642,16 @@ spec:
                         description: ReclaimedResourcesEvictionConfig is the config
                           for reclaimed resources' eviction
                         properties:
+                          enableReclaimedNumaResourcesBatchEviction:
+                            description: |-
+                              EnableReclaimedNumaResourcesBatchEviction controls batch eviction for the NUMA-level reclaimed resource plugin.
+                              Batch eviction is enabled when this field is omitted.
+                            type: boolean
+                          enableReclaimedResourcesBatchEviction:
+                            description: |-
+                              EnableReclaimedResourcesBatchEviction controls batch eviction for the node-level reclaimed resource plugin.
+                              Batch eviction is enabled when this field is omitted.
+                            type: boolean
                           evictionThreshold:
                             additionalProperties:
                               type: number
@@ -656,9 +681,19 @@ spec:
                         description: RootfsPressureEvictionConfig is the config for
                           rootfs pressure eviction
                         properties:
+                          enableRootfsOveruseBatchEviction:
+                            description: |-
+                              EnableRootfsOveruseBatchEviction controls batch eviction for the rootfs overuse plugin.
+                              Batch eviction is enabled when this field is omitted.
+                            type: boolean
                           enableRootfsOveruseEviction:
                             description: EnableRootfsOveruseEviction is whether to
                               enable rootfs overuse eviction.
+                            type: boolean
+                          enableRootfsPressureBatchEviction:
+                            description: |-
+                              EnableRootfsPressureBatchEviction controls batch eviction for the rootfs pressure plugin.
+                              Batch eviction is enabled when this field is omitted.
                             type: boolean
                           enableRootfsPressureEviction:
                             description: EnableRootfsPressureEviction is whether to

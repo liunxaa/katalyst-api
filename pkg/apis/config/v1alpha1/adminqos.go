@@ -507,23 +507,19 @@ type EvictionConfig struct {
 	// NetworkEvictionConfig is the config for network eviction
 	// +optional
 	NetworkEvictionConfig *NetworkEvictionConfig `json:"networkEvictionConfig,omitempty"`
-
-	// BatchEvictionConfig controls rolling batch eviction admission.
-	// +optional
-	BatchEvictionConfig *BatchEvictionConfig `json:"batchEvictionConfig,omitempty"`
-}
-
-type BatchEvictionConfig struct {
-	// Enabled controls whether batch eviction admission is enabled.
-	// +optional
-	Enabled *bool `json:"enabled,omitempty"`
-
-	// PluginNames lists eviction plugins allowed to participate in batch eviction planning.
-	// +optional
-	PluginNames []string `json:"pluginNames,omitempty"`
 }
 
 type ReclaimedResourcesEvictionConfig struct {
+	// EnableReclaimedResourcesBatchEviction controls batch eviction for the node-level reclaimed resource plugin.
+	// Batch eviction is enabled when this field is omitted.
+	// +optional
+	EnableReclaimedResourcesBatchEviction *bool `json:"enableReclaimedResourcesBatchEviction,omitempty"`
+
+	// EnableReclaimedNumaResourcesBatchEviction controls batch eviction for the NUMA-level reclaimed resource plugin.
+	// Batch eviction is enabled when this field is omitted.
+	// +optional
+	EnableReclaimedNumaResourcesBatchEviction *bool `json:"enableReclaimedNumaResourcesBatchEviction,omitempty"`
+
 	// EvictionThreshold eviction threshold rate for reclaimed resources
 	// +optional
 	EvictionThreshold map[v1.ResourceName]float64 `json:"evictionThreshold"`
@@ -720,6 +716,26 @@ type NumaSysCPUPressureEvictionConfig struct {
 }
 
 type MemoryPressureEvictionConfig struct {
+	// EnableNumaMemoryPressureBatchEviction controls batch eviction for the NUMA memory pressure plugin.
+	// Batch eviction is enabled when this field is omitted.
+	// +optional
+	EnableNumaMemoryPressureBatchEviction *bool `json:"enableNumaMemoryPressureBatchEviction,omitempty"`
+
+	// EnableSystemMemoryPressureBatchEviction controls batch eviction for the system memory pressure plugin.
+	// Batch eviction is enabled when this field is omitted.
+	// +optional
+	EnableSystemMemoryPressureBatchEviction *bool `json:"enableSystemMemoryPressureBatchEviction,omitempty"`
+
+	// EnableRSSOveruseBatchEviction controls batch eviction for the RSS overuse plugin.
+	// Batch eviction is enabled when this field is omitted.
+	// +optional
+	EnableRSSOveruseBatchEviction *bool `json:"enableRSSOveruseBatchEviction,omitempty"`
+
+	// EnableGlobalTCPMemoryPressureBatchEviction controls batch eviction for the global TCP memory pressure plugin.
+	// Batch eviction is enabled when this field is omitted.
+	// +optional
+	EnableGlobalTCPMemoryPressureBatchEviction *bool `json:"enableGlobalTCPMemoryPressureBatchEviction,omitempty"`
+
 	// EnableNumaLevelEviction is whether to enable numa-level eviction
 	// +optional
 	EnableNumaLevelEviction *bool `json:"enableNumaLevelEviction,omitempty"`
@@ -864,6 +880,16 @@ type SystemLoadPressureEvictionConfig struct {
 }
 
 type RootfsPressureEvictionConfig struct {
+	// EnableRootfsPressureBatchEviction controls batch eviction for the rootfs pressure plugin.
+	// Batch eviction is enabled when this field is omitted.
+	// +optional
+	EnableRootfsPressureBatchEviction *bool `json:"enableRootfsPressureBatchEviction,omitempty"`
+
+	// EnableRootfsOveruseBatchEviction controls batch eviction for the rootfs overuse plugin.
+	// Batch eviction is enabled when this field is omitted.
+	// +optional
+	EnableRootfsOveruseBatchEviction *bool `json:"enableRootfsOveruseBatchEviction,omitempty"`
+
 	// EnableRootfsPressureEviction is whether to enable rootfs pressure eviction.
 	// +optional
 	EnableRootfsPressureEviction *bool `json:"enableRootfsPressureEviction,omitempty"`
@@ -939,6 +965,11 @@ type RootfsPressureEvictionConfig struct {
 }
 
 type NetworkEvictionConfig struct {
+	// EnableBatchEviction controls batch eviction for the network eviction plugin.
+	// Batch eviction is enabled when this field is omitted.
+	// +optional
+	EnableBatchEviction *bool `json:"enableBatchEviction,omitempty"`
+
 	// EnableNICHealthEviction is whether to enable NIC health eviction.
 	// +optional
 	EnableNICHealthEviction *bool `json:"enableNICNetworkEviction,omitempty"`
@@ -955,6 +986,11 @@ type NetworkEvictionConfig struct {
 }
 
 type CPUSystemPressureEvictionConfig struct {
+	// EnableBatchEviction controls batch eviction for the system CPU pressure plugin.
+	// Batch eviction is enabled when this field is omitted.
+	// +optional
+	EnableBatchEviction *bool `json:"enableBatchEviction,omitempty"`
+
 	// +optional
 	EnableCPUSystemPressureEviction *bool `json:"enableCPUSystemPressureEviction,omitempty"`
 
