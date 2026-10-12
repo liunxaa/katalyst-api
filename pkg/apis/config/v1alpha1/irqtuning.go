@@ -86,7 +86,7 @@ type IRQTuningConfig struct {
 	// +optional
 	DisableXPS *bool `json:"disableXPS,omitempty"`
 	// NICAffinityPolicy represents the NICs's irqs affinity sockets policy.
-	// One of CompleteMap, OverallBalance, PhysicalTopo.
+	// One of CompleteMap, OverallBalance, PhysicalTopo, PhysicalTopoSingleNICSpread.
 	// +optional
 	NICAffinityPolicy NICAffinityPolicy `json:"nicAffinityPolicy,omitempty"`
 
@@ -149,6 +149,10 @@ const (
 	NICAffinityPolicyOverallBalance NICAffinityPolicy = "OverallBalance"
 	// NICAffinityPolicyPhysicalTopo nic's irqs affitnied socket strictly follow whose physical topology bound socket.
 	NICAffinityPolicyPhysicalTopo NICAffinityPolicy = "PhysicalTopo"
+	// NICAffinityPolicyPhysicalTopoSingleNICSpread assigns all sockets to a single normal throughput NIC.
+	// With multiple normal throughput NICs, it follows PhysicalTopo, including the OverallBalance fallback.
+	// Low throughput NICs follow physical topology, using all sockets when their socket cannot be determined.
+	NICAffinityPolicyPhysicalTopoSingleNICSpread NICAffinityPolicy = "PhysicalTopoSingleNICSpread"
 )
 
 type RPSExcludeIRQCoresThreshold struct {

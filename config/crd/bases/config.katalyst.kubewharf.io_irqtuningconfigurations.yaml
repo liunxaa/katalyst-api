@@ -267,7 +267,7 @@ spec:
                   nicAffinityPolicy:
                     description: |-
                       NICAffinityPolicy represents the NICs's irqs affinity sockets policy.
-                      One of CompleteMap, OverallBalance, PhysicalTopo.
+                      One of CompleteMap, OverallBalance, PhysicalTopo, PhysicalTopoSingleNICSpread.
                     type: string
                   normalThroughputNics:
                     description: NormalThroughputNics describes static configured
