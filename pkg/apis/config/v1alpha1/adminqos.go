@@ -1032,6 +1032,13 @@ type SuppressionUsageCPUPressureEvictionConfig struct {
 }
 
 type MemoryPressureEvictionConfig struct {
+	// NumaEvictionAllowedNamespaces is a comma-separated namespace allowlist for NUMA memory eviction.
+	// Omitted uses the startup configuration; an empty string allows all namespaces.
+	// Namespace order does not affect QoS, priority or memory metric ranking.
+	// +kubebuilder:validation:Pattern=`^([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?(,[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?)*)?$`
+	// +optional
+	NumaEvictionAllowedNamespaces *string `json:"numaEvictionAllowedNamespaces,omitempty"`
+
 	// EnableNumaLevelEviction is whether to enable numa-level eviction
 	// +optional
 	EnableNumaLevelEviction *bool `json:"enableNumaLevelEviction,omitempty"`
